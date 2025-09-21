@@ -10,11 +10,6 @@
   --app-primary-transparent: #BA311110;
 }
 
-/* @font-face {
-  font-family: 'Merriweather';
-  src: url('assets/fonts/Merriweather/Merriweather-VariableFont_opsz\,wdth\,wght.ttf');
-} */
-
 @font-face {
   font-family: 'Nunito';
   src: url('assets/fonts/Nunito/Nunito-VariableFont_wght.ttf');
