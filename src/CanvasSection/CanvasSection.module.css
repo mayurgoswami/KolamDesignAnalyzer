@@ -1,0 +1,14 @@
+.section {
+    width: -webkit-fill-available;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--app-light) 0%, #ffffff 100%);
+}
+
+/* temp */
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+}

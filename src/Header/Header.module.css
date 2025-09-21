@@ -1,0 +1,137 @@
+.header, .options_menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: -webkit-fill-available;
+    height: 8vh;
+    justify-content: space-between;
+    padding-inline: 50px;
+    background: var(--app-light-transparent);
+    z-index: 20;
+    box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.menu_toggle_btn, .header input {
+    display: none;
+}
+
+.menu_toggle_btn {
+    position: absolute;
+    right: 10px;
+    width: 27px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.btn_line_one, .btn_line_two, .btn_line_three {
+    width: 100%;
+    height: 15%;
+    background: var(--app-primary);
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+.header h1 {
+    color: var(--app-primary);
+    font-size: clamp(20px, 1.7rem, 60px);
+}
+
+.options_menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.option {
+    list-style: none;
+    cursor: pointer;
+}
+
+.option_link {
+    color: var(--app-warm-grey);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    padding: 3px 7px;
+}
+
+.option_link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--app-primary);
+    transition: width 0.3s;
+    transform-origin: left;
+    z-index: -1;
+}
+
+.option_link:hover::before {
+    width: 100%;
+    border-radius: 0px 10px;
+}
+
+.option_link:hover {
+    color: var(--app-light);
+}
+
+@media (max-width: 1200px) {
+    .header {
+        padding-inline: 5px;
+    }
+    .menu_toggle_btn {
+        display: block;
+    }
+
+    .options_menu {
+        flex-direction: column;
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        border-radius: 3px;
+        background: var(--app-light-transparent);
+        backdrop-filter: blur(5px);
+        gap: 50px;
+        padding: 20px;
+        height: 0;
+        width: 0;
+        transition: all 0.3s;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    .header input:checked ~ .options_menu {
+        width: 200px;
+        height: 300px;
+        opacity: 1;
+    }
+
+    .header input:checked ~ .menu_toggle_btn .btn_line_two {
+        opacity: 0;
+    }
+    
+    .header input:checked ~ .menu_toggle_btn .btn_line_one {
+        transform: rotate(225deg);
+        margin-top: 15px;
+    }
+
+    .header input:checked ~ .menu_toggle_btn .btn_line_three {
+        transform: rotate(-225deg);
+        margin-top: -16px;
+    }
+
+    .header input:checked ~ .menu_toggle_btn {
+        margin-top: -15px;
+    }
+}
