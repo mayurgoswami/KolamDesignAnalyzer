@@ -1,7 +1,12 @@
 import React from 'react';
 import styles from './Footer.module.css';
+import { Link } from 'react-router-dom';
 
-function Footer() {
+function Footer() {  
+  const BackToTop = () => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
+
     return (
         <section className={styles.section}>
             <div>
@@ -10,15 +15,15 @@ function Footer() {
                 <p>
                     Thank you for visiting Kolam Design Analyzer. Keep designing, keep analyzing, explore the world of Kolams.
                 </p>
-                <a href='#home' className={styles.footer_btn}>Back to Top</a>
+                <button className={styles.footer_btn} onClick={BackToTop}>Back to Top</button>
             </div>
             <div>
                 <h3>Site Map</h3>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#upload-section">Upload</a></li>
-                    <li><a href="#canvas-section">Canvas</a></li>
-                    <li><a href="#learn-mode-section">Learn Mode</a></li>
+                    <li><Link onClick={BackToTop} to="/">Home</Link></li>
+                    <li><Link onClick={BackToTop} to="/upload">Upload</Link></li>
+                    <li><Link onClick={BackToTop} to="/canvas">Canvas</Link></li>
+                    <li><Link onClick={BackToTop} to="/learn">Learn Mode</Link></li>
                 </ul>
             </div>
             <div>
@@ -28,7 +33,7 @@ function Footer() {
                     <li><a href="#">Terms of Services</a></li>
                 </ul>
             </div>
-            <div className='copy'>Copyright &copy; Kolam Design Analyzer, All Right Reserved.</div>
+            <div className='copy'>Copyright &copy; 2025, Kolam Design Analyzer, All Right Reserved.</div>
         </section>
     )
 }

@@ -1,9 +1,15 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import styles from './Header.module.css';
 
 import { MenuIcon, X } from 'lucide-react';
 
 function Header() {
+  const BackToTop = () => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
+
   return (
     <header className={styles.header}>
       <input type="checkbox" id="menu_toggle_check" />
@@ -14,10 +20,10 @@ function Header() {
       </label>
         <h1>Kolam Design Analyzer</h1>
         <ul className={styles.options_menu}>
-            <li className={styles.option}><a href="#home" className={styles.option_link}>Home</a></li>
-            <li className={styles.option}><a href="#upload-section" className={styles.option_link}>Upload</a></li>
-            <li className={styles.option}><a href="#canvas-section" className={styles.option_link}>Canvas</a></li>
-            <li className={styles.option}><a href="#learn-mode-section" className={styles.option_link}>Learn Mode</a></li>
+            <li className={styles.option}><Link onClick={BackToTop} to="/" className={styles.option_link}>Home</Link></li>
+            <li className={styles.option}><Link onClick={BackToTop} to="/upload" className={styles.option_link}>Upload</Link></li>
+            <li className={styles.option}><Link onClick={BackToTop} to="/canvas" className={styles.option_link}>Canvas</Link></li>
+            <li className={styles.option}><Link onClick={BackToTop} to="/learn" className={styles.option_link}>Learn Mode</Link></li>
         </ul>
     </header>
   )

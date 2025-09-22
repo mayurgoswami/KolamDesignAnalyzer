@@ -87,8 +87,14 @@ body,
     font-style: italic;
 }
 
+.content_box_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .hero_btn {
-    padding: 5px 15px;
+    padding-block: 5px;
     font-size: 18px;
     font-weight: 600;
     border: 2px solid var(--app-primary);
@@ -100,6 +106,14 @@ body,
     overflow: hidden;
     box-shadow: 3px 3px 0 var(--app-primary);
     margin-block: 10px;
+    width: max-content;
+}
+
+.hero_btn a {
+    text-decoration: none;
+    color: inherit;
+    line-height: 20px;
+    padding-inline:25px;
 }
 
 .hero_btn:hover {
