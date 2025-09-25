@@ -1,13 +1,25 @@
-:root {
-  --app-primary: #BA3111;
-  --app-dark: #1E1F29;
-  --app-light: #F5F0E5;
+/* :root {
+  --app-primary: #1e1f29 (!important);
+  --app-dark: #f2f2f2;
+  --app-light: #1e1f29;
   --app-warm-grey: #6D6A6A;
   --app-sage-green: #8FA998;
   --app-yellow: #E1B530;
 
-  --app-light-transparent: #F5F0E5e1;
-  --app-primary-transparent: #BA311110;
+  --app-light-transparent: #1e1f29e1;
+  --app-primary-transparent: #007bff10;
+} */
+
+:root {
+  --app-primary: #007bff;
+  --app-dark: #121212;
+  --app-light: #f2f2f2;
+  --app-warm-grey: #6D6A6A;
+  --app-sage-green: #8FA998;
+  --app-yellow: #E1B530;
+
+  --app-light-transparent: #f2f2f2e1;
+  --app-primary-transparent: #007bff10;
 }
 
 @font-face {
