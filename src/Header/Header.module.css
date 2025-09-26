@@ -40,7 +40,7 @@
 
 .header h1 {
     color: var(--app-primary);
-    font-size: clamp(20px, 1.7rem, 60px);
+    font-size: 25px;
 }
 
 .options_menu {

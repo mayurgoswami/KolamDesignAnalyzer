@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './AboutSection.module.css';
 import { Link } from 'react-router-dom';
 import kolamImage from '../assets/about-mandala.png';
+import { useTranslation } from 'react-i18next';
 
 const kolamSVG = (
   <svg className={styles.kolamSVG} viewBox="0 0 120 120" width="160" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,16 +17,18 @@ const kolamSVG = (
   </svg>
 );
 
-const funFacts = [
-  'Kolams are drawn daily at sunrise in many South Indian homes.',
-  'Rice flour is used to feed small insects and birds, making Kolam eco-friendly.',
-  'Kolam patterns are often passed down through generations.',
-  'Some Kolams are mathematically complex and used in computer science research!'
-];
 
 const AboutSection = () => {
   const [showFact, setShowFact] = useState(false);
   const [factIdx, setFactIdx] = useState(0);
+  const { t } = useTranslation();
+
+  const funFacts = [
+    t('fact1'),
+    t('fact2'),
+    t('fact3'),
+    t('fact4') 
+  ];
 
   const handleShowFact = () => {
     const newIdx = Math.floor(Math.random() * funFacts.length);
@@ -88,7 +91,6 @@ const AboutSection = () => {
     }
   };
 
-  
   const BackToTop = () => {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
@@ -96,7 +98,7 @@ const AboutSection = () => {
   return (
     <section className={styles.aboutSection} id="about">
       <div className={styles.container}>
-            <img src={kolamImage} className={styles.about_kolam}/>
+        <img src={kolamImage} className={styles.about_kolam}/>
 
         <motion.div 
           className={styles.textCol}
@@ -106,15 +108,15 @@ const AboutSection = () => {
           variants={containerVariants}
         >
           <motion.h2 className={styles.heading} variants={itemVariants}>
-            About Kolam
+            {t('aboutKolam')}
           </motion.h2>
           
           <motion.p className={styles.description} variants={itemVariants}>
-            <strong>Kolam</strong> is a centuries-old art form from South India, where intricate geometric patterns are drawn using rice flour, chalk, or rock powder. Traditionally created at the entrance of homes, Kolams are not just decorative—they symbolize prosperity, welcome, and the cyclical nature of life.
+            <strong>{t('kolam')}</strong> {t('aboutParaOne')}
           </motion.p>
           
           <motion.p className={styles.description} variants={itemVariants}>
-            Our web app brings the beauty and meditative process of Kolam into the digital age. Explore, create, and learn about Kolam designs, their cultural significance, and the mathematical elegance behind each pattern. Whether you are a seasoned artist or a curious beginner, our platform invites you to experience the harmony of tradition and technology.
+            {t('aboutParaTwo')}
           </motion.p>
 
           <motion.div className={styles.interactiveRow} variants={itemVariants}>
@@ -128,7 +130,7 @@ const AboutSection = () => {
               }}
               whileTap={{ scale: 0.95 }}
             >
-              {showFact ? 'Show Another Fun Fact' : 'Show a Fun Fact'}
+              {showFact ? t('factBtnNext') : t('factBtn')}
             </motion.button>
             
             <AnimatePresence mode="wait">
@@ -146,6 +148,7 @@ const AboutSection = () => {
               )}
             </AnimatePresence>
           </motion.div>
+          
           <motion.div
             className={styles.ctaBtn}
             variants={itemVariants}
@@ -156,7 +159,7 @@ const AboutSection = () => {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link to='/canvas' onClick={BackToTop}>Try Drawing a Kolam</Link>
+            <Link to='/canvas' onClick={BackToTop}>{t('drawingBtn')}</Link>
           </motion.div>
         </motion.div>
       </div>

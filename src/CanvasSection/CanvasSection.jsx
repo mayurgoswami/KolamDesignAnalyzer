@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Stage, Layer, Line, Circle, Group } from 'react-konva';
 import { Dot } from 'lucide-react';
 import ColorPalette from './ColorPalette';
-
+import { useTranslation } from 'react-i18next';
 import styles from './CanvasSection.module.css';
 
 const CanvasSection = () => {
@@ -19,6 +19,7 @@ const CanvasSection = () => {
   const [size, setSize] = useState({ width: 800, height: 600 })
   const containerRef = useRef(null)
   const stageRef = useRef()
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handle = () => {
@@ -182,18 +183,18 @@ const CanvasSection = () => {
     <section className={styles.section}>
       <div className={styles.canvasSection}>
         <div className={styles.heading}>
-          <h1 className={styles.title}>Kolam Design Canvas</h1>
+          <h1 className={styles.title}>{t('canvasTitle')}</h1>
           <p className={styles.subtitle}>
-            Create your own Kolam patterns using dots and lines. Start with dots as your foundation, then connect them with beautiful curves.
+            {t('canvasDesc')}
           </p>
         </div>
 
         <div className={styles.gridContainer}>
           {/* Tools Panel */}
           <div className={styles.toolsPanel}>
-            <h2 className={styles.toolsTitle}>Tools</h2>
+            <h2 className={styles.toolsTitle}>{t('tools')}</h2>
             <div className={styles.toolGroup}>
-              <label className={styles.toolLabel}>Drawing Tool</label>
+              <label className={styles.toolLabel}>{t('drawingTool')}</label>
               <div className={styles.actionButtons}>
                 <button
                   onClick={() => setTool('dot')}
@@ -203,7 +204,7 @@ const CanvasSection = () => {
                     <div className={styles.toolIcon}>
                       <Dot/>
                     </div>
-                    <span>Place Dots</span>
+                    <span>{t('placeDot')}</span>
                   </div>
                 </button>
                 <button
@@ -214,20 +215,20 @@ const CanvasSection = () => {
                     <svg className={styles.toolIcon} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M3,17.25V21H6.75L17.81,9.94L14.06,6.19L3,17.25M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.13L18.87,8.88L20.71,7.04Z" />
                     </svg>
-                    <span>Draw Lines</span>
+                    <span>{t('drawLine')}</span>
                   </div>
                 </button>
               </div>
             </div>
             {/* Symmetry */}
             <div className={styles.toolGroup}>
-              <label className={styles.toolLabel}>Symmetry</label>
+              <label className={styles.toolLabel}>{t('symmetry')}</label>
               <div className={styles.symmetryGrid}>
                 {[
-                  { key: 'none', label: 'None' },
-                  { key: 'v', label: 'Vertical' },
-                  { key: 'h', label: 'Horizontal' },
-                  { key: 'r4', label: 'Radial' },
+                  { key: 'none', label: t('none') },
+                  { key: 'v', label: t('vertical') },
+                  { key: 'h', label: t('horizontal') },
+                  { key: 'r4', label: t('radial') },
                 ].map((s) => (
                   <button
                     key={s.key}
@@ -241,11 +242,11 @@ const CanvasSection = () => {
             </div>
             {/* Grid Toggle */}
             <div className={styles.toggleContainer}>
-              <label className={styles.toggleLabel}>Show Grid</label>
+              <label className={styles.toggleLabel}>{t('showGrid')}</label>
               <input type="checkbox" checked={showGrid} onChange={(e) => setShowGrid(e.target.checked)} />
             </div>
             <div className={styles.sliderContainer}>
-              <label className={styles.sliderLabel}>Grid Size</label>
+              <label className={styles.sliderLabel}>{t('gridSize')}</label>
               <input
                 type="range"
                 min={20}
@@ -258,7 +259,7 @@ const CanvasSection = () => {
             </div>
             {/* Color Picker */}
             <div className={styles.toolGroup}>
-              <label className={styles.toolLabel}>Colors</label>
+              <label className={styles.toolLabel}>{t('colors')}</label>
               {/* Ensure ColorPalette is visible and styled */}
               <ColorPalette value={color} onChange={setColor} />
             </div>
@@ -269,30 +270,30 @@ const CanvasSection = () => {
                 className={styles.btnSecondary}
                 disabled={lines.length === 0 && dots.length === 0}
               >
-                Undo Last
+                {t('undoLast')}
               </button>
               <button
                 onClick={redo}
                 className={styles.btnSecondary}
                 disabled={redoStack.length === 0}
               >
-                Redo
+                {t('redo')}
               </button>
               <button
                 onClick={clearCanvas}
                 className={styles.btnDanger}
               >
-                Clear All
+                {t('clearAll')}
               </button>
               <div className={styles.exportButtons}>
-                <button onClick={exportPNG} className={styles.btnPrimary}>Save PNG</button>
-                <button onClick={exportSVG} className={styles.btnSecondary}>Save SVG</button>
+                <button onClick={exportPNG} className={styles.btnPrimary}>{t('savePng')}</button>
+                <button onClick={exportSVG} className={styles.btnSecondary}>{t('saveSvg')}</button>
               </div>
             </div>
             {/* Stats */}
             <div className={styles.stats}>
-              <div className={styles.statItem}>Dots: {dots.length}</div>
-              <div className={styles.statItem}>Lines: {lines.length}</div>
+              <div className={styles.statItem}>{t('dots')}: {dots.length}</div>
+              <div className={styles.statItem}>{t('lines')}: {lines.length}</div>
             </div>
           </div>
           {/* Canvas Area */}
@@ -363,15 +364,15 @@ const CanvasSection = () => {
             </div>
             <div className={styles.canvasFooter}>
               <p className={styles.canvasHint}>
-                Every dot is a story, every line a tradition. Click to place dots; click and drag to draw.
+                {t('canvasQuote')}
               </p>
               <div className={styles.animationControls}>
                 <button onClick={() => setIsAnimating(true)} className={styles.btnPrimary}>
-                  Animate Drawing
+                  {t('animateDrawing')}
                 </button>
                 {isAnimating && (
                   <span className={styles.animationProgress}>
-                    Weaving patterns... {(progress * 100).toFixed(0)}%
+                    {t('animatingProgress', 'Weaving patterns...')} {(progress * 100).toFixed(0)}%
                   </span>
                 )}
               </div>
@@ -380,24 +381,24 @@ const CanvasSection = () => {
         </div>
         {/* Instructions */}
         <div className={styles.instructions}>
-          <h3 className={styles.instructionsTitle}>Kolam Drawing Tips</h3>
+          <h3 className={styles.instructionsTitle}>{t('kolamDrawingTips')}</h3>
           <div className={styles.instructionsGrid}>
             <div>
-              <h4 className={styles.textInk}>Traditional Approach</h4>
+              <h4 className={styles.textInk}>{t('traditionalApproach')}</h4>
               <ul className={styles.instructionList}>
-                <li className={styles.instructionItem}>Start by placing dots in a grid pattern</li>
-                <li className={styles.instructionItem}>Connect dots with smooth, flowing curves</li>
-                <li className={styles.instructionItem}>Maintain symmetry and balance</li>
-                <li className={styles.instructionItem}>Use geometric patterns as your foundation</li>
+                <li className={styles.instructionItem}>{t('approachOne')}</li>
+                <li className={styles.instructionItem}>{t('approachTwo')}</li>
+                <li className={styles.instructionItem}>{t('approachThree')}</li>
+                <li className={styles.instructionItem}>{t('approachFour')}</li>
               </ul>
             </div>
             <div>
-              <h4 className={styles.textInk}>Design Principles</h4>
+              <h4 className={styles.textInk}>{t('designPrinciples')}</h4>
               <ul className={styles.instructionList}>
-                <li className={styles.instructionItem}>Create radial patterns from the center</li>
-                <li className={styles.instructionItem}>Use repetition for visual harmony</li>
-                <li className={styles.instructionItem}>Balance complexity with simplicity</li>
-                <li className={styles.instructionItem}>Let your creativity flow naturally</li>
+                <li className={styles.instructionItem}>{t('principleOne')}</li>
+                <li className={styles.instructionItem}>{t('principleTwo')}</li>
+                <li className={styles.instructionItem}>{t('principleThree')}</li>
+                <li className={styles.instructionItem}>{t('principleFour')}</li>
               </ul>
             </div>
           </div>

@@ -1,25 +1,21 @@
-/* :root {
-  --app-primary: #1e1f29 (!important);
-  --app-dark: #f2f2f2;
-  --app-light: #1e1f29;
-  --app-warm-grey: #6D6A6A;
-  --app-sage-green: #8FA998;
-  --app-yellow: #E1B530;
-
-  --app-light-transparent: #1e1f29e1;
-  --app-primary-transparent: #007bff10;
-} */
-
 :root {
-  --app-primary: #007bff;
-  --app-dark: #121212;
-  --app-light: #f2f2f2;
-  --app-warm-grey: #6D6A6A;
-  --app-sage-green: #8FA998;
-  --app-yellow: #E1B530;
-
-  --app-light-transparent: #f2f2f2e1;
-  --app-primary-transparent: #007bff10;
+  /* Modern Foundation with Traditional Hues */
+  --app-primary: #E53E3E;        /* Modern vibrant red - energetic yet traditional */
+  --app-primary-light: #FC8181;  /* Softer red for gradients */
+  --app-primary-dark: #C53030;   /* Deep red for depth */
+  --app-dark: #2D3748;           /* Modern dark gray with warmth */
+  --app-light: #FAF9F7;          /* Clean background */
+  --app-border: #E2E8F0;         /* Modern subtle borders */
+  
+  /* Modern Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--app-primary) 0%, var(--app-primary-dark) 100%);
+  --gradient-gold: linear-gradient(135deg, var(--app-secondary) 0%, var(--app-turmeric) 100%);
+  --gradient-subtle: linear-gradient(135deg, var(--app-background) 0%, var(--app-surface-alt) 100%);
+  
+  /* Transparent Variants */
+  --app-light-transparent: #FAF9F7e6;
+  --app-primary-transparent: #E53E3E50;
+  --app-surface-transparent: #FFFFFF99;
 }
 
 @font-face {
@@ -37,7 +33,6 @@
 }
 
 body {
-  background: var(--app-dark);
   width: 100%;
   height: 100vh;
 }

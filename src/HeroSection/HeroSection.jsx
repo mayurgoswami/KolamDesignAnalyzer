@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import styles from './HeroSection.module.css';
 import mandala from '../assets/mandala-orange.png';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function HeroSection() {
+  const { t } = useTranslation();
+
   // Animation variants for framer-motion
   const outerMandalaVariants = {
     animate: {
@@ -84,12 +87,12 @@ function HeroSection() {
           initial="hidden"
           animate="visible"
         >
-          <p>Welcome to the</p>
-          <h1>Kolam Design <span>Analyzer</span></h1>
-          <q>Where tradition meets algorithm, and every dot becomes a story.</q>
+          <p>{t('welcome')}</p>
+          <h1>{t('appName')}</h1>
+          <q>{t('quote')}</q>
           <div className={styles.content_box_btn}>
             <div className={styles.hero_btn}>
-              <Link to='/upload'>Get Started</Link>
+              <Link to='/upload'>{t('stated')}</Link>
             </div>
           </div>
         </motion.div>

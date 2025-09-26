@@ -1,8 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { ImageUpIcon, Info, ImageIcon, CheckCircle, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import './UploadSection.css';
 
 function UploadSection() {
+  const { t } = useTranslation();
+
   const [dragActive, setDragActive] = useState(false);
   const [files, setFiles] = useState([]);
   const [uploadProgress, setUploadProgress] = useState({});
@@ -51,7 +54,7 @@ function UploadSection() {
     const validFiles = newFiles.filter(file => {
       if (!file.type.startsWith('image/')) return false;
       if (file.size > 10 * 1024 * 1024) {
-        alert(`File ${file.name} is too large. Max size is 10MB.`);
+        alert(`${file.name} - ${t('maxSize')}`);
         return false;
       }
       return true;
@@ -106,13 +109,13 @@ function UploadSection() {
   };
 
   const handleUploadClick = () => {
-    alert(`Uploading ${files.length} file(s)...\n\nIn a real application, this would send the files to a server.`);
+    alert(`${t('analyzeBtn')}: ${files.length} ${files.length === 1 ? 'file' : 'files'}`);
   };
 
   return (
     <section className="section" id='upload-section'>
       <div className="floating_container">
-        <h1>Upload Files</h1>
+        <h1>{t('uploadTitle')}</h1>
         <label 
           htmlFor="input-files" 
           className={`upload_box ${dragActive ? 'drag_active' : ''}`}
@@ -132,10 +135,10 @@ function UploadSection() {
             multiple 
           />
           <ImageUpIcon color={dragActive ? '#BA3111' : '#6D6A6A'} size={100} />
-          <p>Drag & drop or click to choose files</p>
+          <p>{t('useHelp')}</p>
           <div className="file_restriction">
             <Info color='#6D6A6A' size={18} />
-            <p>Max image size: 10MB</p>
+            <p>{t('maxSize')}</p>
           </div>
         </label>
         
@@ -158,7 +161,7 @@ function UploadSection() {
                     ></div>
                   </div>
                   <span className="progress_text">
-                    {uploadComplete[file.name] ? 'Complete' : `${Math.round(uploadProgress[file.name] || 0)}%`}
+                    {uploadComplete[file.name] ? t('complete') : `${Math.round(uploadProgress[file.name] || 0)}%`}
                   </span>
                 </div>
               </div>
@@ -180,7 +183,7 @@ function UploadSection() {
           onClick={handleUploadClick}
           disabled={files.length === 0}
         >
-          Analyze
+          {t('analyzeBtn')}
         </button>
       </div>
     </section>
