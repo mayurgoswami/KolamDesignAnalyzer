@@ -23,6 +23,12 @@
   src: url('assets/fonts/Nunito/Nunito-VariableFont_wght.ttf');
 }
 
+/* Special fonts for tamil language */
+@font-face {
+  font-family: 'Tamil';
+  src: url('assets/fonts/Noto_Sans_Tamil/NotoSansTamil-VariableFont_wdth\,wght.ttf');
+}
+
 * {
   margin: 0;
   padding: 0;

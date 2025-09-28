@@ -60,12 +60,23 @@
     text-align: center;
 }
 
+html:lang(ta) .content_box {
+    text-align: center;
+    position: static;
+    margin-top: 20px;
+}
+
 .content_box p,
 .content_box q {
     font-size: 25px;
     color: var(--app-dark);
     font-weight: 600;
     width: 46vw;
+}
+
+html:lang(ta) .content_box p,
+html:lang(ta) .content_box q {
+    font-size: 100%;
 }
 
 .content_box h1 {
@@ -76,10 +87,10 @@
     border-radius: 5px;
 }
 
-/* .content_box h1 span {
-    color: transparent;
-    -webkit-text-stroke: 2px var(--app-primary);
-} */
+html:lang(ta) .content_box h1 {
+    font-size: 150%;
+    margin-inline-start: 20px;
+}
 
 .content_box q {
     display: block;

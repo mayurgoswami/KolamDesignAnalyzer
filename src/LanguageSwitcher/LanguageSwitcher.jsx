@@ -33,9 +33,8 @@ export default function LanguageSwitcher() {
         <Globe className="w-5 h-5 text-blue-600" />
         <span className="font-medium">{currentLang.label}</span>
         <ChevronDown
-          className={`w-4 h-4 transition-transform ${
-            open ? "rotate-180" : ""
-          }`}
+          className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""
+            }`}
         />
       </button>
 
@@ -53,11 +52,10 @@ export default function LanguageSwitcher() {
               <li key={lang.code}>
                 <button
                   onClick={() => handleLanguageChange(lang.code)}
-                  className={`w-full px-4 py-2 text-left hover:bg-blue-100 ${
-                    currentLang.code === lang.code
+                  className={`w-full px-4 py-2 text-left hover:bg-blue-100 ${currentLang.code === lang.code
                       ? "bg-blue-50 text-blue-600 font-semibold"
                       : "text-gray-700"
-                  }`}
+                    }`}
                 >
                   {lang.label}
                 </button>

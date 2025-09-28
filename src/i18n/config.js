@@ -33,6 +33,14 @@ i18n
       order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage']
     }
+  }).then(() => {
+    // Set initial language
+    document.documentElement.lang = i18n.language;
+
+    // Listen for language changes
+    i18n.on('languageChanged', (lng) => {
+      document.documentElement.lang = lng;
+    });
   });
 
 export default i18n;

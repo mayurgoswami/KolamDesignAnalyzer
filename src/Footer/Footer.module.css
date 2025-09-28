@@ -18,6 +18,12 @@
     font-size: 1.5rem;
 }
 
+html:lang(ta) .section div h1 {
+    width: 100%;
+    font-size: 1.2rem;
+    text-wrap: wrap;
+}
+
 .section div p {
     margin-block: 10px 50px;
 }

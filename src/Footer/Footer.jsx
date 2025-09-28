@@ -14,7 +14,7 @@ function Footer() {
     <section className={styles.section}>
       <div>
         <h1>{t('appName')}</h1>
-        <i>by Team Name</i>
+        <i>by Rangorythm</i>
         <p>{t('thankYou')}</p>
         <button className={styles.footer_btn} onClick={BackToTop}>
           {t('backBtn')}

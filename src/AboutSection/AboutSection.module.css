@@ -33,7 +33,6 @@
 }
 
 .heading {
-  font-family: 'Merriweather', serif;
   font-size: 3rem;
   color: var(--app-primary);
   margin-bottom: 24px;
