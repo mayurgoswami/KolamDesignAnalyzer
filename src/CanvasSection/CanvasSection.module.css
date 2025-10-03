@@ -1,5 +1,6 @@
 .section {
-    background: var(--app-light);
+  backdrop-filter: blur(5px);
+    background: transparent;
 }
 
 .canvasSection {
@@ -11,6 +12,9 @@
 .heading {
   text-align: center;
   margin-bottom: 2rem;
+  background: var(--app-light);
+  border-radius: 5px;
+  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.1);
 }
 
 .title {

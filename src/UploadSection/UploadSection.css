@@ -1,10 +1,8 @@
 .section {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--app-light) 0%, #ffffff 100%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: transparent;
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
